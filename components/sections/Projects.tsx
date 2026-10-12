@@ -1,42 +1,44 @@
-import { ArrowUpRight, Github } from "lucide-react";
-import SectionHeading from "@/components/ui/SectionHeading";
+import { ExternalLink, Github } from "lucide-react";
 import Reveal from "@/components/ui/Reveal";
+import SectionHeading from "@/components/ui/SectionHeading";
 import { projects } from "@/lib/content";
 
 export default function Projects() {
   return (
     <section id="projects" className="py-20 sm:py-28">
-      <div className="mx-auto max-w-6xl px-4 sm:px-6">
+      <div className="container-page">
         <SectionHeading
           eyebrow="Projects"
           title="Selected work"
-          blurb="Six things I've shipped — products, tools and open source — with the stack behind each one."
+          description="A few things I've designed, built, and shipped — from open-source libraries to products with real users and revenue."
         />
 
-        <div className="mt-12 grid gap-5 md:grid-cols-2">
+        <div className="mt-14 grid gap-6 md:grid-cols-2">
           {projects.map((project, i) => (
-            <Reveal key={project.title} delay={(i % 2) * 0.08}>
-              <article
-                className={`card card-hover flex h-full flex-col ${
-                  project.featured ? "border-accent/30 bg-elevated/60" : ""
-                }`}
-              >
-                <div className="flex items-start justify-between gap-4">
-                  <div>
-                    <h3 className="text-lg font-semibold text-ink">{project.title}</h3>
-                    <p className="mt-0.5 text-xs font-medium uppercase tracking-wider text-muted">
+            <Reveal key={project.name} delay={0.06 * i}>
+              <article className="card card-hover group flex h-full flex-col rounded-2xl p-6 sm:p-7">
+                <div className={`relative mb-6 h-36 overflow-hidden rounded-xl bg-gradient-to-br ${project.accent}`}>
+                  <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(255,255,255,0.25),transparent_55%)]" />
+                  <div className="absolute inset-0 flex items-center justify-between p-5">
+                    <span className="rounded-lg bg-black/25 px-3 py-1 text-xs font-semibold text-white backdrop-blur-sm">
                       {project.year}
-                      {project.featured ? " · Featured" : ""}
-                    </p>
+                    </span>
+                    <span className="rounded-lg bg-black/25 px-3 py-1 text-xs font-medium text-white/90 backdrop-blur-sm">
+                      {project.role}
+                    </span>
                   </div>
-                  {project.featured ? (
-                    <span className="chip border-accent/40 text-accent">★ Featured</span>
-                  ) : null}
                 </div>
 
-                <p className="mt-4 flex-1 text-sm leading-relaxed text-muted">{project.description}</p>
+                <h3 className="text-xl font-bold text-white">{project.name}</h3>
+                <p className="mt-1 text-sm font-medium text-primary-300">{project.tagline}</p>
+                <p className="mt-3 flex-1 text-sm leading-relaxed text-slate-400">{project.description}</p>
 
-                <ul className="mt-5 flex flex-wrap gap-2">
+                <p className="mt-4 inline-flex items-center gap-2 text-sm font-medium text-accent-300">
+                  <span aria-hidden="true">📈</span>
+                  {project.metric}
+                </p>
+
+                <ul className="mt-4 flex flex-wrap gap-2">
                   {project.tags.map((tag) => (
                     <li key={tag} className="chip">
                       {tag}
@@ -44,25 +46,19 @@ export default function Projects() {
                   ))}
                 </ul>
 
-                <div className="mt-6 flex items-center gap-4 border-t border-line/10 pt-4">
-                  <a
-                    href={project.live}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1.5 text-sm font-semibold text-accent transition hover:text-accent-strong"
-                  >
-                    Live demo
-                    <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
-                  </a>
-                  <a
-                    href={project.source}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1.5 text-sm font-medium text-muted transition hover:text-ink"
-                  >
-                    <Github className="h-4 w-4" aria-hidden="true" />
-                    Source
-                  </a>
+                <div className="mt-6 flex flex-wrap items-center gap-4 border-t border-white/10 pt-5">
+                  {project.links.map((link, li) => (
+                    <a
+                      key={link.label}
+                      href={link.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1.5 text-sm font-semibold text-slate-200 transition hover:text-accent-300"
+                    >
+                      {li === 0 ? <ExternalLink className="h-4 w-4" aria-hidden="true" /> : <Github className="h-4 w-4" aria-hidden="true" />}
+                      {link.label}
+                    </a>
+                  ))}
                 </div>
               </article>
             </Reveal>

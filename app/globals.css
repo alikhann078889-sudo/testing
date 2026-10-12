@@ -3,74 +3,101 @@
 @tailwind utilities;
 
 :root {
-  /* Palette: deep navy ink + warm amber accent */
-  --color-base: 8 12 26;          /* #080C1A page background */
-  --color-surface: 15 22 42;      /* #0F162A card surface */
-  --color-elevated: 22 31 56;     /* #161F38 raised surface */
-  --color-line: 148 163 184;      /* slate-400, used at low alpha for borders */
-  --color-ink: 226 232 240;       /* #E2E8F0 primary text */
-  --color-muted: 148 163 184;     /* #94A3B8 secondary text */
-  --color-accent: 251 191 36;     /* #FBBF24 amber-400 */
-  --color-accent-strong: 245 158 11; /* #F59E0B amber-500 */
+  /* Core palette — deep slate night with violet primary and cyan accent */
+  --color-bg: #070b14;
+  --color-surface: #0d1322;
+  --color-surface-2: #131b2e;
+  --color-border: #1e2a44;
+  --color-text: #e8edf7;
+  --color-text-muted: #94a3b8;
+  --color-primary: #8b5cf6;
+  --color-primary-soft: #a78bfa;
+  --color-accent: #22d3ee;
+  --color-accent-soft: #67e8f9;
+  --color-success: #34d399;
+  --color-danger: #f87171;
 }
 
-html {
-  scroll-behavior: smooth;
-}
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 5.5rem;
+  }
 
-body {
-  @apply bg-base text-ink antialiased;
-}
+  body {
+    background-color: var(--color-bg);
+    color: var(--color-text);
+    -webkit-font-smoothing: antialiased;
+  }
 
-/* Anchor offset so sticky navbar never covers section headings */
-section[id] {
-  scroll-margin-top: 5.5rem;
-}
+  ::selection {
+    background: rgba(139, 92, 246, 0.35);
+    color: #fff;
+  }
 
-::selection {
-  background: rgb(var(--color-accent) / 0.28);
-  color: rgb(var(--color-ink));
-}
-
-:focus-visible {
-  outline: 2px solid rgb(var(--color-accent));
-  outline-offset: 2px;
-  border-radius: 2px;
+  /* Visible, consistent focus states */
+  :focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
 }
 
 @layer components {
-  .glass {
-    background: rgb(var(--color-surface) / 0.72);
-    backdrop-filter: blur(14px);
-    -webkit-backdrop-filter: blur(14px);
-    border: 1px solid rgb(var(--color-line) / 0.14);
+  .container-page {
+    @apply mx-auto w-full max-w-6xl px-5 sm:px-8;
   }
 
   .card {
-    @apply rounded-2xl border border-line/15 bg-surface/70 p-6 transition-colors duration-300;
+    @apply rounded-2xl border border-white/10 bg-white/[0.03] backdrop-blur-sm transition-colors duration-300;
   }
 
   .card-hover {
-    @apply hover:border-accent/40 hover:bg-elevated/70;
+    @apply hover:border-white/20 hover:bg-white/[0.06];
   }
 
   .chip {
-    @apply inline-flex items-center rounded-full border border-line/20 bg-elevated/60 px-3 py-1 text-xs font-medium text-muted;
+    @apply inline-flex items-center rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs font-medium text-slate-300;
   }
 
   .btn-primary {
-    @apply inline-flex items-center justify-center gap-2 rounded-full bg-accent px-6 py-3 text-sm font-semibold text-base shadow-lg shadow-accent/20 transition hover:bg-accent-strong hover:shadow-accent/30 focus-visible:outline-none;
+    @apply inline-flex items-center justify-center gap-2 rounded-full bg-primary-500 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-primary-500/25 transition hover:bg-primary-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-400;
   }
 
   .btn-ghost {
-    @apply inline-flex items-center justify-center gap-2 rounded-full border border-line/25 px-6 py-3 text-sm font-semibold text-ink transition hover:border-accent/50 hover:text-accent focus-visible:outline-none;
+    @apply inline-flex items-center justify-center gap-2 rounded-full border border-white/15 bg-white/5 px-6 py-3 text-sm font-semibold text-slate-200 transition hover:border-white/30 hover:bg-white/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-400;
   }
 }
 
-/* Subtle dotted grid used behind hero */
-.dot-grid {
-  background-image: radial-gradient(rgb(var(--color-line) / 0.18) 1px, transparent 1px);
-  background-size: 26px 26px;
-  mask-image: radial-gradient(ellipse 70% 60% at 50% 35%, black 30%, transparent 75%);
-  -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 35%, black 30%, transparent 75%);
+/* Ambient background glows used by the page shell */
+.page-glow::before,
+.page-glow::after {
+  content: "";
+  position: fixed;
+  z-index: -1;
+  border-radius: 9999px;
+  filter: blur(120px);
+  pointer-events: none;
+}
+
+.page-glow::before {
+  width: 40rem;
+  height: 40rem;
+  top: -14rem;
+  right: -10rem;
+  background: radial-gradient(circle, rgba(139, 92, 246, 0.16), transparent 65%);
+}
+
+.page-glow::after {
+  width: 36rem;
+  height: 36rem;
+  bottom: -12rem;
+  left: -12rem;
+  background: radial-gradient(circle, rgba(34, 211, 238, 0.1), transparent 65%);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
 }
