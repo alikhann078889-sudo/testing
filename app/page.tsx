@@ -1,11 +1,27 @@
+import Navbar from "@/components/sections/Navbar";
+import Hero from "@/components/sections/Hero";
+import About from "@/components/sections/About";
+import Skills from "@/components/sections/Skills";
+import Projects from "@/components/sections/Projects";
+import Experience from "@/components/sections/Experience";
+import Testimonials from "@/components/sections/Testimonials";
+import Contact from "@/components/sections/Contact";
+import Footer from "@/components/sections/Footer";
+
 export default function Home() {
   return (
-    <main className="flex min-h-screen items-center justify-center bg-zinc-950 px-6 text-white">
-      <section className="max-w-2xl text-center">
-        <p className="mb-4 text-sm font-medium uppercase tracking-[0.3em] text-indigo-300">Your new site</p>
-        <h1 className="text-5xl font-bold tracking-tight sm:text-7xl">A fresh start.</h1>
-        <p className="mx-auto mt-6 max-w-xl text-lg text-zinc-300">Tell the Code agent what you want to build. It will shape this page around your idea.</p>
-      </section>
-    </main>
-  )
+    <>
+      <Navbar />
+      <main>
+        <Hero />
+        <About />
+        <Skills />
+        <Projects />
+        <Experience />
+        <Testimonials />
+        <Contact />
+      </main>
+      <Footer />
+    </>
+  );
 }
