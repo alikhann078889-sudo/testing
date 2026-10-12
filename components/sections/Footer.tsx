@@ -1,53 +1,75 @@
-import { site, nav, socials } from "@/lib/content";
+import { Github, Linkedin, Twitter, Dribbble, Heart } from "lucide-react";
+import { nav, site } from "@/lib/content";
+
+const socialIcons: Record<string, typeof Github> = {
+  github: Github,
+  linkedin: Linkedin,
+  twitter: Twitter,
+  dribbble: Dribbble,
+};
 
 export default function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="border-t border-line/10 py-10">
-      <div className="mx-auto flex max-w-6xl flex-col items-center gap-6 px-4 sm:px-6 md:flex-row md:justify-between">
-        <div className="flex items-center gap-2.5">
-          <span className="grid h-9 w-9 place-items-center rounded-full bg-accent text-sm font-bold text-base">
-            {site.initials}
-          </span>
-          <div>
-            <p className="text-sm font-semibold text-ink">{site.name}</p>
-            <p className="text-xs text-muted">{site.role} · {site.location}</p>
+    <footer className="border-t border-white/10 py-12">
+      <div className="container-page">
+        <div className="flex flex-col items-center gap-8 md:flex-row md:items-start md:justify-between">
+          {/* Brand */}
+          <div className="text-center md:text-left">
+            <a href="#top" className="inline-flex items-center gap-2 font-semibold text-white">
+              <span className="grid h-8 w-8 place-items-center rounded-lg bg-gradient-to-br from-primary-500 to-accent-500 text-sm font-bold text-white">
+                M
+              </span>
+              {site.name}
+            </a>
+            <p className="mt-2 max-w-xs text-sm text-slate-400">
+              {site.role} crafting fast, accessible products from {site.location}.
+            </p>
           </div>
+
+          {/* Nav */}
+          <nav aria-label="Footer">
+            <ul className="flex flex-wrap justify-center gap-x-5 gap-y-2 text-sm">
+              {nav.map((item) => (
+                <li key={item.href}>
+                  <a href={item.href} className="text-slate-400 transition hover:text-white">
+                    {item.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </nav>
+
+          {/* Socials */}
+          <ul className="flex gap-3">
+            {site.socials.map((social) => {
+              const Icon = socialIcons[social.icon] ?? Github;
+              return (
+                <li key={social.label}>
+                  <a
+                    href={social.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={`${site.name} on ${social.label}`}
+                    className="grid h-10 w-10 place-items-center rounded-lg border border-white/10 bg-white/5 text-slate-400 transition hover:border-primary-400/50 hover:text-white"
+                  >
+                    <Icon className="h-4 w-4" aria-hidden="true" />
+                  </a>
+                </li>
+              );
+            })}
+          </ul>
         </div>
 
-        <nav aria-label="Footer">
-          <ul className="flex flex-wrap justify-center gap-x-5 gap-y-2">
-            {nav.map((item) => (
-              <li key={item.href}>
-                <a href={item.href} className="text-sm text-muted transition hover:text-accent">
-                  {item.label}
-                </a>
-              </li>
-            ))}
-          </ul>
-        </nav>
-
-        <ul className="flex items-center gap-2.5">
-          {socials.map((s) => (
-            <li key={s.label}>
-              <a
-                href={s.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label={s.label}
-                className="grid h-9 w-9 place-items-center rounded-full border border-line/25 text-muted transition hover:border-accent/50 hover:text-accent"
-              >
-                <s.icon className="h-4 w-4" aria-hidden="true" />
-              </a>
-            </li>
-          ))}
-        </ul>
+        <div className="mt-10 flex flex-col items-center justify-between gap-3 border-t border-white/10 pt-6 text-xs text-slate-500 sm:flex-row">
+          <p>© {year} {site.name}. All rights reserved.</p>
+          <p className="inline-flex items-center gap-1.5">
+            Built with Next.js, Tailwind &amp; a little
+            <Heart className="h-3.5 w-3.5 text-primary-400" aria-hidden="true" />
+          </p>
+        </div>
       </div>
-
-      <p className="mt-8 text-center text-xs text-muted">
-        © {year} {site.name}. Designed & built with Next.js, Tailwind CSS and too much coffee.
-      </p>
     </footer>
   );
 }

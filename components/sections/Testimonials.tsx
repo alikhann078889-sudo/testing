@@ -1,29 +1,37 @@
 import { Quote } from "lucide-react";
-import SectionHeading from "@/components/ui/SectionHeading";
 import Reveal from "@/components/ui/Reveal";
+import SectionHeading from "@/components/ui/SectionHeading";
 import { testimonials } from "@/lib/content";
 
 export default function Testimonials() {
   return (
     <section id="testimonials" className="py-20 sm:py-28">
-      <div className="mx-auto max-w-6xl px-4 sm:px-6">
+      <div className="container-page">
         <SectionHeading
           eyebrow="Testimonials"
-          title="What collaborators say"
-          align="center"
+          title="Kind words from collaborators"
+          description="Feedback from product leaders and founders I've built with over the years."
         />
 
-        <div className="mt-12 grid gap-5 md:grid-cols-3">
+        <div className="mt-14 grid gap-6 md:grid-cols-3">
           {testimonials.map((t, i) => (
-            <Reveal key={t.name} delay={i * 0.08}>
-              <figure className="card card-hover flex h-full flex-col">
-                <Quote className="h-6 w-6 text-accent" aria-hidden="true" />
-                <blockquote className="mt-4 flex-1 text-sm leading-relaxed text-ink/90">
-                  “{t.quote}”
+            <Reveal key={t.name} delay={0.08 * i}>
+              <figure className="card card-hover flex h-full flex-col rounded-2xl p-6 sm:p-7">
+                <Quote className="h-7 w-7 text-primary-400" aria-hidden="true" />
+                <blockquote className="mt-4 flex-1 text-sm leading-relaxed text-slate-300">
+                  &ldquo;{t.quote}&rdquo;
                 </blockquote>
-                <figcaption className="mt-6 border-t border-line/10 pt-4">
-                  <p className="text-sm font-semibold text-ink">{t.name}</p>
-                  <p className="mt-0.5 text-xs text-muted">{t.role}</p>
+                <figcaption className="mt-6 flex items-center gap-3 border-t border-white/10 pt-5">
+                  <span
+                    aria-hidden="true"
+                    className="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-gradient-to-br from-primary-500/40 to-accent-500/30 text-sm font-bold text-white"
+                  >
+                    {t.initials}
+                  </span>
+                  <span>
+                    <span className="block font-semibold text-white">{t.name}</span>
+                    <span className="block text-xs text-slate-400">{t.title}</span>
+                  </span>
                 </figcaption>
               </figure>
             </Reveal>

@@ -1,22 +1,16 @@
-import {
-  Github,
-  Linkedin,
-  Twitter,
-  Mail,
-  MonitorSmartphone,
-  Database,
-  Workflow,
-  type LucideIcon,
-} from "lucide-react";
-
 export const site = {
   name: "Maya Chen",
-  initials: "MC",
-  role: "Senior Product Engineer",
-  location: "Berlin, Germany",
-  email: "hello@mayachen.dev",
-  availability: "Open to senior product roles & select freelance",
-  resumeUrl: "/resume.pdf",
+  role: "Design Engineer & Full-Stack Developer",
+  location: "San Francisco, CA",
+  email: "maya@mayachen.dev",
+  availability: "Open to senior product engineering roles",
+  resumeUrl: "/resume-maya-chen.pdf",
+  socials: [
+    { label: "GitHub", href: "https://github.com/mayachen-dev", icon: "github" },
+    { label: "LinkedIn", href: "https://www.linkedin.com/in/mayachen-dev", icon: "linkedin" },
+    { label: "X / Twitter", href: "https://x.com/mayachen_dev", icon: "twitter" },
+    { label: "Dribbble", href: "https://dribbble.com/mayachen", icon: "dribbble" },
+  ],
 };
 
 export const nav = [
@@ -24,230 +18,230 @@ export const nav = [
   { label: "Skills", href: "#skills" },
   { label: "Projects", href: "#projects" },
   { label: "Experience", href: "#experience" },
+  { label: "Testimonials", href: "#testimonials" },
   { label: "Contact", href: "#contact" },
 ];
 
-export type Social = { label: string; href: string; icon: LucideIcon };
-export const socials: Social[] = [
-  { label: "GitHub", href: "https://github.com/mayachen-dev", icon: Github },
-  { label: "LinkedIn", href: "https://www.linkedin.com/in/mayachen-dev", icon: Linkedin },
-  { label: "X / Twitter", href: "https://x.com/mayachen_dev", icon: Twitter },
-  { label: "Email", href: "mailto:hello@mayachen.dev", icon: Mail },
-];
-
 export const hero = {
-  eyebrow: "Senior Product Engineer · Berlin",
-  headlineA: "I build fast, humane software",
-  headlineB: "for data-heavy products.",
-  sub: "Eight years turning ambiguous problems into shipped products — real-time dashboards, design systems and offline-first tools that thousands of people rely on every day.",
-  primaryCta: { label: "View projects", href: "#projects" },
+  eyebrow: "Design Engineer · San Francisco",
+  headline: "I build fast, thoughtful products where engineering meets design.",
+  subline:
+    "Hi, I'm Maya. For the past 8 years I've shipped web apps used by millions — obsessing over the last 10% of polish that turns a good product into a great one.",
+  primaryCta: { label: "View my work", href: "#projects" },
   secondaryCta: { label: "Get in touch", href: "#contact" },
   stats: [
-    { value: "8+", label: "years shipping products" },
-    { value: "40k/min", label: "events streamed at peak" },
-    { value: "12", label: "products taken 0 → 1" },
-    { value: "4.9k", label: "GitHub stars on my OSS" },
+    { value: "8+", label: "Years shipping products" },
+    { value: "40+", label: "Projects launched" },
+    { value: "12", label: "Open-source libraries" },
+    { value: "3.2M", label: "Users reached" },
   ],
 };
 
 export const about = {
   eyebrow: "About",
-  title: "Engineer who sweats the last 10%",
+  title: "Engineer by training, designer at heart",
   paragraphs: [
-    "I'm Maya — a product engineer based in Berlin. I've spent the last eight years in the messy middle between design and infrastructure: prototyping with designers in the morning, tuning Postgres queries in the afternoon.",
-    "My favourite work looks invisible: a dashboard that loads before you finish blinking, a sync engine that never loses a field note, a design system that lets a team of five ship like a team of twenty.",
-    "Away from the keyboard I race vintage road bikes, photograph brutalist architecture, and maintain two open-source libraries used in production by teams I've never met.",
+    "I started out as a CS major at UC Berkeley who kept sneaking into design critiques. Today I sit comfortably in both worlds: I can take a fuzzy idea, sketch the interface, design the system, and ship the production code behind it.",
+    "Most recently I led the front-end platform team at Northwind Labs, where we rebuilt a legacy dashboard into a Next.js app that loads in under 400ms and cut support tickets by 31%. Before that I built real-time collaboration tools at Driftline and mentored 20+ engineers through their first production launches.",
+    "Outside of work you'll find me sketching interface ideas in a battered Moleskine, contributing to open-source design tooling, and chasing the perfect flat white.",
   ],
   highlights: [
-    "Led the design system powering 9 product teams",
-    "Cut p95 dashboard load time from 4.1s to 640ms",
-    "Mentored 11 engineers, 4 now senior",
-    "Speaker: React Berlin 2024, “Local-first that lasts”",
-  ],
-  facts: [
-    { label: "Based in", value: "Berlin (CET, UTC+1)" },
-    { label: "Focus", value: "Product engineering, DX, data viz" },
-    { label: "Currently", value: "Learning Rust for edge tooling" },
-    { label: "Open to", value: "Senior roles & select freelance" },
+    { title: "Product-minded", detail: "I ask 'why' before 'how' — every feature starts from a user problem." },
+    { title: "Performance obsessed", detail: "Core Web Vitals, bundle budgets, and 60fps interactions by default." },
+    { title: "Design systems", detail: "I've built and maintained token-based systems used by 5 product teams." },
+    { title: "Mentor & writer", detail: "Writing about interface craft to 18k subscribers on 'Polished Bits'." },
   ],
 };
 
-export type SkillGroup = { title: string; icon: LucideIcon; blurb: string; items: string[] };
-export const skillGroups: SkillGroup[] = [
+export const skillGroups = [
   {
     title: "Frontend",
-    icon: MonitorSmartphone,
-    blurb: "Interfaces that stay fast and accessible under real-world load.",
-    items: ["TypeScript", "React 19", "Next.js App Router", "Tailwind CSS", "Framer Motion", "WCAG 2.2 AA"],
+    icon: "layout",
+    skills: ["TypeScript", "React 19", "Next.js 15", "Tailwind CSS", "Framer Motion", "Accessibility (WCAG)"],
   },
   {
     title: "Backend & Data",
-    icon: Database,
-    blurb: "APIs and data models that hold up when the traffic graph goes vertical.",
-    items: ["Node.js", "PostgreSQL", "Prisma", "Redis", "tRPC", "WebSockets", "ClickHouse"],
+    icon: "server",
+    skills: ["Node.js", "PostgreSQL", "Prisma", "Redis", "tRPC / GraphQL", "Edge functions"],
   },
   {
-    title: "Practice & Tooling",
-    icon: Workflow,
-    blurb: "The habits that keep small teams shipping with confidence.",
-    items: ["Design systems", "Vitest & Playwright", "CI/CD (GitHub Actions)", "Observability", "Figma", "Technical writing"],
+    title: "Design & Craft",
+    icon: "pen",
+    skills: ["Figma", "Design systems", "Motion design", "Prototyping", "User research", "Figma-to-code"],
+  },
+  {
+    title: "Platform & Tooling",
+    icon: "wrench",
+    skills: ["Vercel", "Docker", "CI/CD (GitHub Actions)", "Playwright", "Storybook", "Analytics & A/B testing"],
   },
 ];
 
 export type Project = {
-  title: string;
-  year: string;
+  name: string;
+  tagline: string;
   description: string;
   tags: string[];
-  live: string;
-  source: string;
-  featured?: boolean;
+  year: string;
+  role: string;
+  metric: string;
+  accent: string;
+  links: { label: string; href: string }[];
 };
 
 export const projects: Project[] = [
   {
-    title: "Pulseboard",
+    name: "Pulseboard",
+    tagline: "Real-time product analytics",
+    description:
+      "A streaming analytics dashboard that ingests 40k events/sec via WebSockets and renders live funnels with virtualized charts. Led the migration from a legacy Angular app to Next.js.",
+    tags: ["Next.js", "ClickHouse", "WebSockets", "D3"],
     year: "2024",
-    description:
-      "Real-time operations dashboard for a logistics startup — 40k events/min streamed over WebSockets into virtualised charts, with alert routing that cut incident triage time by 38%.",
-    tags: ["Next.js", "WebSockets", "ClickHouse", "Recharts"],
-    live: "https://pulseboard.demo",
-    source: "https://github.com/mayachen-dev/pulseboard",
-    featured: true,
+    role: "Tech lead · 5 engineers",
+    metric: "P95 dashboard load 6.1s → 380ms",
+    accent: "from-violet-500/70 to-fuchsia-500/40",
+    links: [
+      { label: "Live demo", href: "https://pulseboard-demo.vercel.app" },
+      { label: "Case study", href: "https://mayachen.dev/writing/pulseboard" },
+    ],
   },
   {
-    title: "Fieldnotes",
-    year: "2024",
+    name: "Lumen UI",
+    tagline: "Open-source component library",
     description:
-      "Offline-first field research app for ecologists. CRDT-based sync keeps 200+ species surveys consistent across patchy connectivity in the field; used by 3 university labs.",
-    tags: ["PWA", "IndexedDB", "Yjs", "Deno"],
-    live: "https://fieldnotes.app",
-    source: "https://github.com/mayachen-dev/fieldnotes",
-    featured: true,
-  },
-  {
-    title: "Ledgerline",
+      "A fully accessible React component library with 48 components, design tokens, and dark mode built in. Used in production by 2,300+ projects and featured on GitHub Trending.",
+    tags: ["TypeScript", "Radix UI", "Tailwind", "Storybook"],
     year: "2023",
-    description:
-      "Open-source invoicing for freelancers: a typed CLI plus web UI that generates compliant PDF invoices from a git-friendly YAML ledger. 2.1k stars and 40+ contributors.",
-    tags: ["TypeScript", "tRPC", "Prisma", "OSS"],
-    live: "https://ledgerline.dev",
-    source: "https://github.com/mayachen-dev/ledgerline",
+    role: "Creator & maintainer",
+    metric: "4.1k GitHub stars · 90k weekly downloads",
+    accent: "from-cyan-500/70 to-sky-500/40",
+    links: [
+      { label: "Documentation", href: "https://lumen-ui.dev" },
+      { label: "GitHub", href: "https://github.com/mayachen-dev/lumen-ui" },
+    ],
   },
   {
-    title: "Cartogram",
+    name: "Ledgerly",
+    tagline: "Invoicing for freelancers",
+    description:
+      "A SaaS that turns time tracking into branded invoices with Stripe payments and automated reminders. Built solo end-to-end; grew to 1,800 paying customers in year one.",
+    tags: ["Next.js", "Stripe", "PostgreSQL", "Prisma"],
     year: "2023",
-    description:
-      "Interactive visualisation of EU open transit data — 1.2M stop-level records rendered with MapLibre and D3, with isochrone queries served from a pre-tiled edge cache.",
-    tags: ["D3", "MapLibre", "Edge caching"],
-    live: "https://cartogram.viz",
-    source: "https://github.com/mayachen-dev/cartogram",
+    role: "Founder · solo build",
+    metric: "$18k MRR · 1,800 paying users",
+    accent: "from-emerald-500/70 to-teal-500/40",
+    links: [
+      { label: "Live site", href: "https://ledgerly.app" },
+      { label: "Changelog", href: "https://ledgerly.app/changelog" },
+    ],
   },
   {
-    title: "Relay CMS",
+    name: "Fernweh",
+    tagline: "Offline-first travel planner",
+    description:
+      "A PWA for planning multi-city trips with collaborative itineraries, Mapbox routing, and full offline support via IndexedDB sync. Installable, 92 Lighthouse score.",
+    tags: ["React", "Mapbox", "IndexedDB", "PWA"],
     year: "2022",
-    description:
-      "Headless CMS starter with edge-rendered previews and typed content models. Adopted as the base for 6 client builds; template downloaded 9k times.",
-    tags: ["Next.js", "Sanity", "Edge runtime"],
-    live: "https://relaycms.dev",
-    source: "https://github.com/mayachen-dev/relay-cms",
+    role: "Design & frontend",
+    metric: "38k monthly active travelers",
+    accent: "from-amber-500/70 to-orange-500/40",
+    links: [
+      { label: "Live app", href: "https://fernweh.app" },
+      { label: "GitHub", href: "https://github.com/mayachen-dev/fernweh" },
+    ],
   },
   {
-    title: "Snipsmith",
+    name: "Echo Notes",
+    tagline: "Voice memos that organize themselves",
+    description:
+      "Records voice notes, transcribes them with Whisper on edge functions, and auto-tags action items into structured summaries. Ships as a mobile-first web app.",
+    tags: ["Whisper API", "Edge runtime", "Zustand", "Vercel AI"],
+    year: "2024",
+    role: "Side project",
+    metric: "Product Hunt #2 · 6.5k upvotes",
+    accent: "from-rose-500/70 to-pink-500/40",
+    links: [
+      { label: "Live demo", href: "https://echonotes.app" },
+      { label: "Write-up", href: "https://mayachen.dev/writing/echo-notes" },
+    ],
+  },
+  {
+    name: "Orbit Retros",
+    tagline: "Real-time team retrospectives",
+    description:
+      "A collaborative retro board where distributed teams run ceremonies together — CRDT-backed live cursors, anonymous voting, and automatic action-item follow-ups in Slack.",
+    tags: ["Yjs", "CRDTs", "Node.js", "Slack API"],
     year: "2021",
-    description:
-      "Local-first snippet manager with end-to-end encryption via WebCrypto and optional peer sync. Desktop-grade keyboard UX in the browser; 12k monthly active users.",
-    tags: ["React", "Dexie", "WebCrypto"],
-    live: "https://snipsmith.app",
-    source: "https://github.com/mayachen-dev/snipsmith",
+    role: "Full-stack engineer",
+    metric: "Adopted by 340 engineering teams",
+    accent: "from-indigo-500/70 to-blue-500/40",
+    links: [
+      { label: "Product page", href: "https://orbitretro.com" },
+      { label: "Case study", href: "https://mayachen.dev/writing/orbit" },
+    ],
   },
 ];
 
-export type Job = {
-  role: string;
-  company: string;
-  period: string;
-  location: string;
-  summary: string;
-  highlights: string[];
-};
-
-export const experience: Job[] = [
+export const experience = [
   {
-    role: "Senior Product Engineer",
-    company: "Nordlicht Labs",
-    period: "2022 — Present",
-    location: "Berlin",
-    summary: "Technical lead for the analytics suite serving 300+ B2B customers.",
-    highlights: [
-      "Led the design system now powering 9 product teams; cut UI build time ~35%",
-      "Re-architected ingestion to ClickHouse; p95 dashboard load 4.1s → 640ms",
-      "Introduced Playwright e2e gates; production regressions down 60%",
+    company: "Northwind Labs",
+    role: "Senior Frontend Engineer → Tech Lead",
+    period: "2021 — Present",
+    location: "San Francisco (hybrid)",
+    summary:
+      "Lead a team of 5 rebuilding the core analytics product. Own the design system, performance budget, and front-end architecture across 3 squads.",
+    bullets: [
+      "Cut P95 dashboard load from 6.1s to 380ms via streaming SSR and route-level code splitting.",
+      "Shipped a token-based design system now used by 5 product teams; reduced UI defects 44%.",
+      "Introduced Playwright E2E coverage on critical flows, dropping regression escapes by 60%.",
     ],
   },
   {
+    company: "Driftline",
     role: "Full-Stack Engineer",
-    company: "Freightwave",
-    period: "2020 — 2022",
-    location: "Hamburg (remote)",
-    summary: "Built the real-time shipment tracking platform used by 40 freight forwarders.",
-    highlights: [
-      "WebSocket pipeline handling 40k position events/min at peak season",
-      "Shipped carrier-integration framework; onboarding new carriers 3× faster",
-      "Owned Postgres schema and query performance through 10× data growth",
+    period: "2018 — 2021",
+    location: "Remote",
+    summary:
+      "Built real-time collaboration features for a docs startup from seed stage through Series B acquisition.",
+    bullets: [
+      "Implemented multiplayer editing with Yjs CRDTs supporting 200+ concurrent editors per doc.",
+      "Designed and shipped the public REST + WebSocket API used by 60+ integration partners.",
+      "Scaled the Node.js presence service from 1k to 90k concurrent connections.",
     ],
   },
   {
-    role: "Frontend Engineer",
-    company: "Klarheit Studio",
-    period: "2018 — 2020",
-    location: "Berlin",
-    summary: "Client work for fintech and mobility startups, from prototype to production.",
-    highlights: [
-      "Delivered 14 production launches with a 3-person team",
-      "Built the studio's internal component library and Storybook pipeline",
-      "Brought every client project to WCAG 2.1 AA before it was fashionable",
-    ],
-  },
-  {
-    role: "Junior Developer",
-    company: "Stadtwerke Digital",
+    company: "Brightfold Studio",
+    role: "Frontend Developer",
     period: "2016 — 2018",
-    location: "Leipzig",
-    summary: "First engineering role: citizen-facing services for a municipal utility.",
-    highlights: [
-      "Rebuilt the outage map as a progressive web app; 92k monthly users",
-      "Automated the release process, cutting deploys from hours to minutes",
+    location: "Oakland, CA",
+    summary:
+      "Agency role building marketing sites and interactive campaigns for consumer brands.",
+    bullets: [
+      "Delivered 25+ award-nominated sites; two Awwwards 'Site of the Day' mentions.",
+      "Standardized the studio's React starter, cutting project setup time from days to hours.",
     ],
   },
 ];
 
-export type Testimonial = { quote: string; name: string; role: string };
-export const testimonials: Testimonial[] = [
+export const testimonials = [
   {
     quote:
-      "Maya joined a burning platform and left behind a calm, well-tested codebase. She asks the question everyone else was afraid to ask, then quietly fixes the root cause.",
-    name: "Jonas Weber",
-    role: "VP Engineering, Nordlicht Labs",
-  },
-  {
-    quote:
-      "The rare engineer who argues about kerning and query plans in the same standup. Our dashboard went from 'the slow page' to the product demo we lead with.",
+      "Maya is the rare engineer who sweats the pixels and the query plans. She rebuilt our dashboard and our activation rate jumped 18% in a quarter.",
     name: "Priya Raghavan",
-    role: "Head of Product, Freightwave",
+    title: "VP Product, Northwind Labs",
+    initials: "PR",
   },
   {
     quote:
-      "Maya turned our vague 'make it feel alive' brief into a real-time interface our field teams actually trust. Handover docs so good we barely needed her — but we keep hiring her anyway.",
-    name: "Dr. Elena Fischer",
-    role: "Research Lead, Ecology Dept. TU Munich",
+      "She took a napkin sketch and turned it into Lumen UI — accessible, documented, and beautiful. Half our team now reaches for her library first.",
+    name: "Daniel Okafor",
+    title: "Staff Engineer, Fintech Collective",
+    initials: "DO",
+  },
+  {
+    quote:
+      "Working with Maya on Orbit felt like adding three people: a designer, a backend engineer, and a product lead. The live cursors demo sold our whole seed round.",
+    name: "Sofia Marino",
+    title: "Co-founder, Driftline",
+    initials: "SM",
   },
 ];
-
-export const contact = {
-  eyebrow: "Contact",
-  title: "Let's build something worth shipping",
-  blurb:
-    "Have a product that needs an engineer who cares about the details? Tell me what you're working on — I read everything and reply within two working days.",
-  responseNote: "Usually replies within 48 hours · Berlin, CET",
-};
